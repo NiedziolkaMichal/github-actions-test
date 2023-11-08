@@ -22,4 +22,4 @@ jobs:
       - id: step2
         run: echo "secondword=world" >> $GITHUB_OUTPUT
       - id: step3
-        run: echo ${{ inputs.firstword }}
+        run: echo "### asd ${{ inputs.firstword }}"
