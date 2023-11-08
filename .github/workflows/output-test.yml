@@ -21,5 +21,7 @@ jobs:
         run: echo "firstword=hello" >> $GITHUB_OUTPUT
       - id: step2
         run: echo "secondword=world" >> $GITHUB_OUTPUT
+        env:
+          MY_OUTPUT: ${{ toJson($GITHUB_OUTPUT) }}
       - name: dump
-        run: echo "asd ${{ toJson($GITHUB_OUTPUT) }}"
+        run: echo "asd $MY_OUTPUT"
