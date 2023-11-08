@@ -23,6 +23,6 @@ jobs:
         run: echo "secondword=world" >> $GITHUB_OUTPUT
       - name: Generate 0 or 1
         id: generate_number
-        run:  echo "random_number=$(($RANDOM % 2))" >> $GITHUB_OUTPUT
+        run:  echo "random_number=${{ $RANDOM % 2 }}" >> $GITHUB_OUTPUT
       - id: step3
         run: echo ${{ steps.generate_number.outputs.random_number }}
