@@ -1,0 +1,10 @@
+name: Call output test
+
+on:
+  workflow_dispatch
+jobs:
+  first-job:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./output-test.yml
