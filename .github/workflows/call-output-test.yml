@@ -7,4 +7,4 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - run: ./output-test.yml
+      - run: NiedziolkaMichal/github-actions-test/.github/workflows/output-test.yml
