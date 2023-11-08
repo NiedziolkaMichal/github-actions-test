@@ -18,10 +18,8 @@ jobs:
       output2: ${{ steps.step2.outputs.secondword }}
     steps:
       - id: step1
-        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+        run: echo "firstword=hello" >> $MY_OUTPUT
       - id: step2
-        run: echo "secondword=world" >> $GITHUB_OUTPUT
-        env:
-          MY_OUTPUT: ${{ toJson($GITHUB_OUTPUT) }}
+        run: echo "secondword=world" >> $MY_OUTPUT
       - name: dump
         run: echo "asd $MY_OUTPUT"
