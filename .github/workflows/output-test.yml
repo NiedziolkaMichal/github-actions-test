@@ -19,6 +19,7 @@ jobs:
     steps:
       - id: step1
         run: echo "firstword=hello" >> $GITHUB_OUTPUT
+      - run: echo "Ordinary echo"
       - run: echo "::debug::Set the Octocat variable"
       - run: echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon notice"
       - run: echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon warning"
