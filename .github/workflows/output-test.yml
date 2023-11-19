@@ -21,9 +21,9 @@ jobs:
         run: echo "firstword=hello" >> $GITHUB_OUTPUT
       - run: echo "Ordinary echo"
       - run: echo "::debug::Set the Octocat variable"
-      - run: echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon notice"
-      - run: echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon warning"
-      - run: echo "::error file=app.js,line=1,col=5,endColumn=7::Missing semicolon error"
+      - run: echo "::notice file=app.js,line=1,col=5,endColumn=7,title=asd::Missing semicolon notice"
+      - run: echo "::warning file=app.js,line=1,col=5,endColumn=7,title=dsa::Missing semicolon warning"
+      - run: echo "::error file=app.js,line=1,col=5,endColumn=7,title=ddd ggg::Missing semicolon error"
       - run: echo "my content" >> $GITHUB_STEP_SUMMARY
       - name: Group of log lines
         run: |
