@@ -14,9 +14,6 @@ jobs:
           sudo apt update
           sudo apt install mongodb-database-tools
           mongodump --version
-      - name: temp
-        shell: bash
-        run: echo ${{ secrets.MONGO_BACKUP_URI }}
       - name: Dump database
         shell: bash
-        run: mongodump --uri ${{ secrets.ENVIRONMENT_VARIABLE_NAME }}
+        run: mongodump --uri ${{ secrets.MONGO_BACKUP_URI }}
