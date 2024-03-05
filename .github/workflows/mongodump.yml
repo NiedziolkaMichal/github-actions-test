@@ -6,7 +6,12 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
-      - name: Install dependencies
+      - name: Auth GCloud
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: 'projects/742992254038/locations/global/workloadIdentityPools/github/providers/my-repo'
+      - name: Install mongodump
+        if: false
         shell: bash
         run: |
           wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc |  gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg > /dev/null
@@ -15,5 +20,6 @@ jobs:
           sudo apt install mongodb-database-tools
           mongodump --version
       - name: Dump database
+        if: false
         shell: bash
         run: mongodump --uri ${{ secrets.MONGO_BACKUP_URI }}
