@@ -1,0 +1,14 @@
+name: MongoDB Dump
+
+on:
+  workflow_dispatch
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install mongodb-database-tools
+          mongodump --version
+        shell: bash
