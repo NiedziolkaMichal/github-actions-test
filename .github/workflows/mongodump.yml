@@ -7,10 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
+        shell: bash
         run: |
           wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc |  gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg > /dev/null
           echo "deb [ arch=amd64 signed-by=/usr/share/keyrings/mongodb.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
           sudo apt update
           sudo apt install mongodb-database-tools
           mongodump --version
+      - name: temp
         shell: bash
+        run: echo ${{ secrets.MONGO_BACKUP_URI }}
+      - name: Dump database
+        shell: bash
+        run: mongodump --uri ${{ secrets.ENVIRONMENT_VARIABLE_NAME }}
