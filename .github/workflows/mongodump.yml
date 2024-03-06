@@ -26,15 +26,15 @@ jobs:
           sudo apt install mongodb-database-tools
           mongodump --version
 
-      - name: Dump database
-        shell: bash
-        run: mongodump --uri ${{ secrets.MONGO_BACKUP_URI }}
-
       - name: Generate destination name
         run: echo "NOW=$(date +'%Y-%m-%d_%H.%M.%S')" >> $GITHUB_ENV
+
+      - name: Dump database
+        shell: bash
+        run: mongodump --uri ${{ secrets.MONGO_BACKUP_URI }} --archive=${{ env.NOW }}.archive
 
       - name: Upload dump
         uses: 'google-github-actions/upload-cloud-storage@v2'
         with:
-          path: dump_${{ env.NOW }}
+          path: ${{ env.NOW }}.archive
           destination: fiszki_backup
