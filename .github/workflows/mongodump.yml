@@ -30,8 +30,11 @@ jobs:
         shell: bash
         run: mongodump --uri ${{ secrets.MONGO_BACKUP_URI }}
 
+      - name: Current date
+        run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+
       - name: Upload dump
         uses: 'google-github-actions/upload-cloud-storage@v2'
         with:
           path: 'dump'
-          destination: 'fiszki_backup'
+          destination: 'fiszki_backup $NOW'
