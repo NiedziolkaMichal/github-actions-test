@@ -5,7 +5,10 @@ permissions:
   id-token: 'write'
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+  schedule:
+    - cron: '0 5 * * *'
+
 jobs:
   dump:
     name: MongoDB Dump
@@ -24,7 +27,6 @@ jobs:
           echo "deb [ arch=amd64 signed-by=/usr/share/keyrings/mongodb.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
           sudo apt update
           sudo apt install mongodb-database-tools
-          mongodump --version
 
       - name: Generate destination name
         run: echo "NOW=$(date +'%Y-%m-%d_%H.%M.%S')" >> $GITHUB_ENV
