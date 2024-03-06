@@ -31,10 +31,10 @@ jobs:
 
       - name: Dump database
         shell: bash
-        run: mongodump --uri ${{ secrets.MONGO_BACKUP_URI }} --archive=${{ env.NOW }}.archive
+        run: mongodump --uri ${{ secrets.MONGO_BACKUP_URI }} --archive=${{ env.NOW }}.gz --gzip
 
       - name: Upload dump
         uses: 'google-github-actions/upload-cloud-storage@v2'
         with:
-          path: ${{ env.NOW }}.archive
+          path: ${{ env.NOW }}.gz
           destination: fiszki_backup
