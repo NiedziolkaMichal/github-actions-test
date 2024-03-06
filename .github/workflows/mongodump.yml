@@ -36,5 +36,5 @@ jobs:
       - name: Upload dump
         uses: 'google-github-actions/upload-cloud-storage@v2'
         with:
-          path: dumpp_${{ env.NOW }}
+          path: dump_${{ env.NOW }}
           destination: fiszki_backup
