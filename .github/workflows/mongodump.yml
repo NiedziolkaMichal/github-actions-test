@@ -13,8 +13,8 @@ jobs:
       - name: Auth GCloud
         uses: 'google-github-actions/auth@v2'
         with:
-          workload_identity_provider: ${{ GCLOUD_IDENTITY_PROVIDER }}
-          service_account: ${{ GCLOUD_SERVICE_ACCOUNT }}
+          workload_identity_provider: ${{ secrets.GCLOUD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCLOUD_SERVICE_ACCOUNT }}
 
       - name: Install mongodump
         shell: bash
