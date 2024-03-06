@@ -7,8 +7,6 @@ on:
       firstword:
         description: "The first output string"
         type: string
-  push:
-    branches: [ main ]
 
 jobs:
   example_job:
