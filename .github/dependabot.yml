@@ -6,7 +6,7 @@ version: 2
 #    username: ${{secrets.DEPENDABOT_ARTIFACTORY_USERNAME}}
 #    password: ${{secrets.DEPENDABOT_ARTIFACTORY_PASSWORD}}
 updates:
-  - package-ecosystem: npm
+  - package-ecosystem: "npm"
     #registries:
     #  - allegro-artifactory
     directory: "/"
@@ -18,5 +18,6 @@ updates:
    #   timezone: Europe/Warsaw
     allow:
       - dependency-name: "user-agents" #"@allegro/opbox-web"
-    #ignore:
-    #  - update-types: ["version-update:semver-major"]
+    ignore:
+      - dependency-name: "user-agents"
+        update-types: ["version-update:semver-major"]
