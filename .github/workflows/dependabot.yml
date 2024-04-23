@@ -1,0 +1,22 @@
+version: 2
+#registries:
+#  allegro-artifactory:
+#    type: npm-registry
+#    url: https://artifactory.allegrogroup.com/artifactory/api/npm/group-npm/
+#    username: ${{secrets.DEPENDABOT_ARTIFACTORY_USERNAME}}
+#    password: ${{secrets.DEPENDABOT_ARTIFACTORY_PASSWORD}}
+updates:
+  - package-ecosystem: npm
+    #registries:
+    #  - allegro-artifactory
+    directory: /
+    #open-pull-requests-limit: 1
+    #versioning-strategy: increase
+    schedule:
+      interval: daily
+   #   time: "14:30"
+   #   timezone: Europe/Warsaw
+    allow:
+      - dependency-name: "user-agents" #"@allegro/opbox-web"
+    #ignore:
+    #  - update-types: ["version-update:semver-major"]
