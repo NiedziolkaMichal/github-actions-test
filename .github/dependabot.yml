@@ -17,7 +17,7 @@ updates:
    #   time: "14:30"
    #   timezone: Europe/Warsaw
     allow:
-      - dependency-name: "user-agents" #"@allegro/opbox-web"
+      - dependency-name: "react" #"@allegro/opbox-web"
     ignore:
-      - dependency-name: "user-agents"
+      - dependency-name: "react"
         update-types: ["version-update:semver-major"]
