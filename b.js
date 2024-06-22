@@ -1,4 +1,4 @@
 	console.log('before import');
     import react from 'react';
     console.log(react);
-    console.log('after import')
+    console.log('after impor2t')
