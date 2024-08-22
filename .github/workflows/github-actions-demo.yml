@@ -13,7 +13,7 @@ on:
         required: false
       packageType:
         type: choice
-        description: "Snapshot assets expire after a month, while beta is meant to be published on prod & doesn't expire"
+        description: "Package type. Snapshot assets expire after a month, while beta is meant to be published on prod & doesn't expire"
         required: true
         default: "snapshot"
         options:
