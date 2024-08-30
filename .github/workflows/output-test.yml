@@ -1,40 +1,23 @@
 name: Reusable workflow
 
 on:
-  workflow_dispatch:
+  workflow_call:
     # Map the workflow outputs to job outputs
     inputs:
-      firstword:
-        description: "The first output string"
+      publicationType:
         type: string
+        description: '"snapshot" or "beta" publication type which determines expiration date'
+        default: "beta"
+        required: false
 
 jobs:
   example_job:
     name: Generate output
     runs-on: ubuntu-latest
     # Map the job outputs to step outputs
-    outputs:
-      output1: ${{ steps.step1.outputs.firstword }}
-      output2: ${{ steps.step2.outputs.secondword }}
     steps:
-      - run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
-      - id: step1
-        run: echo "firstword=hello" >> $GITHUB_OUTPUT
-      - run: echo "Ordinary echo"
-      - run: echo "::debug::Set the Octocat variable"
-      - run: echo "::notice file=app.js,line=1,col=5,endColumn=7,title=asd::Missing semicolon notice"
-      - run: echo "::warning file=app.js,line=1,col=5,endColumn=7,title=dsa::Missing semicolon warning"
-      - run: echo "::error file=app.js,line=1,col=5,endColumn=7,title=ddd ggg::Missing semicolon error"
-      - run: echo "my content" >> $GITHUB_STEP_SUMMARY
-      - name: Group of log lines
-        run: |
-            echo "::group::My title"
-            echo "Inside group"
-            echo "::endgroup::"
-      - id: step2
-        run: echo "secondword=world" >> $GITHUB_OUTPUT
-      - id: sleep
-        run: sleep 30s
-        shell: bash
-      - id: step3
-        run: echo "### asd ${{ inputs.firstword }}" >> $GITHUB_STEP_SUMMARY
+      - name: "Say Hello Mona it's Monday"
+        run: echo "My_Ref $My_Ref. First_Name $First_Name!"
+        env:
+          My_Ref: ${{ github.ref }}
+          First_Name: ${{ inputs.publicationType == 'snapshot' && contains(fromJSON('["refs/heads/master", "refs/heads/main"]'), github.ref) && 'beta' || inputs.publicationType }}
