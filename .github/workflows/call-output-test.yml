@@ -7,4 +7,6 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - run: NiedziolkaMichal/github-actions-test/.github/workflows/output-test.yml@main
+      - uses: NiedziolkaMichal/github-actions-test/.github/workflows/output-test.yml@main
+        with: 
+           publicationType: 'snapshot'
