@@ -1,4 +1,4 @@
-name: PR test
+name: Pull Request test
 
 on:
   pull_request:
