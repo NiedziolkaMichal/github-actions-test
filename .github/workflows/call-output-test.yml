@@ -1,10 +1,22 @@
 name: Call output test
 
 on:
-  workflow_dispatch
+  pull_request:
 jobs:
-  first-job:
-    name: Test
-    uses: NiedziolkaMichal/github-actions-test/.github/workflows/output-test.yml@main
-    with: 
-      publicationType: 'snapshot'
+  asd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print
+        run: |
+          echo "${{ github.event.pull_request.title }}"
+          echo "${{ github.event.pull_request.base.ref }}"
+      - name: Check whether PR is the revert to master branch
+        id: check-revert
+        run: |
+          if echo '${{ github.event.pull_request.title }}' | grep -q "Revert" && [[ ${{ github.event.pull_request.base.ref }} == 'main' ]]; then
+            echo "This is the revert PR to master branch"
+            echo "is-revert-to-master=true" >> $GITHUB_OUTPUT
+          else
+            echo "This is not the revert PR to master branch"
+            echo "is-revert-to-master=false" >> $GITHUB_OUTPUT
+          fi
