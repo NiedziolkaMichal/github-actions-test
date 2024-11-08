@@ -1,4 +1,4 @@
-name: Call output test
+name: PR test
 
 on:
   pull_request:
